@@ -14,3 +14,7 @@ func NewDatabase() (*Database, error) {
 
 	return &Database{db: db}, nil
 }
+
+func (d *Database) Close() {
+	d.db.Close()
+}
