@@ -1,3 +1,8 @@
 postgresinit:
 	docker run --name postgres15 -p 5433:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=password -d postgres:15-alpine
+	docker exec -it postgres15 createdb --user
+
+dropdb:
+	docker exec -it postgres15 dropdb go-chat
+
 .PHONY: postgresinit
