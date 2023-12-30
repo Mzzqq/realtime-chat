@@ -10,4 +10,4 @@ createdb:
 dropdb:
 	docker exec -it postgres15 dropdb go-chat
 
-.PHONY: postgresinit
+.PHONY: postgresinit postgres createdb dropdb
