@@ -5,7 +5,7 @@ postgres:
 	docker exec -it postgres15 psql
 
 createdb:
-	docker exec -it postgres15 createdb --user
+	docker exec -it postgres15 createdb --username=root --owner=root go-chat
 
 dropdb:
 	docker exec -it postgres15 dropdb go-chat
