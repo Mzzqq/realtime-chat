@@ -19,3 +19,7 @@ type repository struct {
 func NewRepository(db DBTX) Repository {
 	return &repository{db: db}
 }
+
+func (r *repository) CreateUser(ctx context.Context, user *User) (*User, error) {
+
+}
