@@ -15,3 +15,7 @@ type DBTX interface {
 type repository struct {
 	db DBTX
 }
+
+func NewRepository(db DBTX) Repository {
+	return &repository{db: db}
+}
