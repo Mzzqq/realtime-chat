@@ -8,5 +8,8 @@ type service struct {
 }
 
 func NewService(repository Repository) Service {
-	return &service{}
+	return &service{
+		repository,
+		time.Duration(2) * time.Second,
+	}
 }
