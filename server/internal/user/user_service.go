@@ -23,11 +23,11 @@ func (s *service) CreateUser(c context.Context, req *CreateUserReq) (*CreateUser
 	defer cancel()
 
 	// TODO: Hash password
-
+	
 	u := &User{
 		Username: req.Username,
 		Email:    req.Email,
-		Password: hashedPassowrd,
+		Password: hashedPassword,
 	}
 
 	r, err := s.Repository.CreateUser(ctx, u)
