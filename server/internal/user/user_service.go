@@ -18,5 +18,14 @@ func NewService(repository Repository) Service {
 }
 
 func (s *service) CreateUser(c context.Context, req *CreateUserReq) (*CreateUserRes, error) {
+	ctx, cancel := context.WithTimeout(c, s.timeout)
+	defer cancel()
 
+	// TODO: Hash password
+
+	u := &User{
+		Username: req.Username,
+		Email:    req.Email,
+		Password: hashedPassowrd,
+	}
 }
