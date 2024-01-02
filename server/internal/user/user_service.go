@@ -1,6 +1,9 @@
 package user
 
-import "time"
+import (
+	"context"
+	"time"
+)
 
 type service struct {
 	Repository
@@ -12,4 +15,8 @@ func NewService(repository Repository) Service {
 		repository,
 		time.Duration(2) * time.Second,
 	}
+}
+
+func (s *service) CreateUser(c context.Context, req *CreateUserReq) (*CreateUserRes, error) {
+
 }
