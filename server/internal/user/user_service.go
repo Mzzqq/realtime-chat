@@ -84,5 +84,10 @@ func (s *service) Login(c context.Context, req *LoginUserReq) (*LoginUserRes, er
 		},
 	})
 
-	token.SignedString([]byte(secretKey))
+	ss, err := token.SignedString([]byte(secretKey))
+	if err != nil {
+		return &LoginUserRes{}, err
+	}
+
+	return &LoginUserRes{accesToken: ss, Username: u.Username, ID: strconv.Itoa(int(u.ID))}, nil
 }
