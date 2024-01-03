@@ -12,3 +12,7 @@ func InitRouter(userHandler *user.Handler) {
 
 	r.POST("/signup", userHandler.CreateUser)
 }
+
+func Start(addr string) error {
+	return r.Run(addr)
+}
