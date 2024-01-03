@@ -50,4 +50,9 @@ func (s *service) CreateUser(c context.Context, req *CreateUserReq) (*CreateUser
 
 }
 
-func (s *service) Login(ctx context.Context, req *LoginUserReq) (*LoginUserRes, error) {}
+func (s *service) Login(c context.Context, req *LoginUserReq) (*LoginUserRes, error) {
+	ctx, cancel := context.WithTimeout(c, s.timeout)
+	defer cancel()
+
+	s.Repository.GetUserByEmail()
+}
