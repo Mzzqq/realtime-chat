@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"github.com/golang-jwt/jwt/v5"
 	"server/util"
 	"strconv"
 	"time"
@@ -50,6 +51,12 @@ func (s *service) CreateUser(c context.Context, req *CreateUserReq) (*CreateUser
 
 }
 
+type MyJWTClaims struct {
+	ID       string `json:"id"`
+	Username string `json:"username"`
+	jwt.RegisteredClaims
+}
+
 func (s *service) Login(c context.Context, req *LoginUserReq) (*LoginUserRes, error) {
 	ctx, cancel := context.WithTimeout(c, s.timeout)
 	defer cancel()
@@ -63,4 +70,6 @@ func (s *service) Login(c context.Context, req *LoginUserReq) (*LoginUserRes, er
 	if err != nil {
 		return &LoginUserRes{}, err
 	}
+
+	jwt.NewWithClaims(jwt.SigningMethodHS256)
 }
