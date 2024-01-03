@@ -49,3 +49,5 @@ func (s *service) CreateUser(c context.Context, req *CreateUserReq) (*CreateUser
 	return res, nil
 
 }
+
+func (s *service) Login(ctx context.Context, req *LoginUserReq) (*LoginUserRes, error) {}
