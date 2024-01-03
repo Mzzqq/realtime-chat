@@ -29,9 +29,9 @@ type LoginUserReq struct {
 }
 
 type LoginUserRes struct {
-	accesToken string
-	ID         string `json:"id" db:"id"`
-	Username   string `json:"username" db:"username"`
+	accessToken string
+	ID          string `json:"id" db:"id"`
+	Username    string `json:"username" db:"username"`
 }
 
 type Repository interface {
