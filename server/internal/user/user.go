@@ -23,6 +23,11 @@ type CreateUserRes struct {
 	Email    string `json:"email" db:"email"`
 }
 
+type LoginUserReq struct {
+	Email    string `json:"email" db:"email"`
+	Password string `json:"password" db:"password"`
+}
+
 type Repository interface {
 	CreateUser(ctx context.Context, user *User) (*User, error)
 	GetUserByEmail(ctx context.Context, email string) (*User, error)
