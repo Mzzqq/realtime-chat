@@ -54,5 +54,10 @@ func (s *service) Login(c context.Context, req *LoginUserReq) (*LoginUserRes, er
 	ctx, cancel := context.WithTimeout(c, s.timeout)
 	defer cancel()
 
-	s.Repository.GetUserByEmail()
+	u, err := s.Repository.GetUserByEmail(ctx, req.Email)
+	if err != nil {
+		return &LoginUserRes{}, err
+	}
+
+	util.CheckPassword(req.Password, u.Password)
 }
