@@ -8,6 +8,10 @@ import (
 	"time"
 )
 
+const (
+	secretKey = "secret"
+)
+
 type service struct {
 	Repository
 	timeout time.Duration
@@ -79,4 +83,6 @@ func (s *service) Login(c context.Context, req *LoginUserReq) (*LoginUserRes, er
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
 		},
 	})
+
+	token.SignedString([]byte(secretKey))
 }
