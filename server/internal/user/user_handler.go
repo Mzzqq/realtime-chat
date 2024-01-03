@@ -37,4 +37,19 @@ func (h *Handler) Login(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+
+	u, err := h.Service.Login(c.Request.Context(), &user)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error{}})
+		return
+	}
+
+	c.SetCookie("jwt", u.accessToken, 3600. "/", "localhost", false, true)
+
+	res := &LoginUserRes{
+		Username: u.Username,
+		ID: u.ID
+	}
+
+	c.JSON(http.StatusOK, res)
 }
