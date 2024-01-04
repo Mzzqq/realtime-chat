@@ -12,6 +12,6 @@ type Hub struct {
 
 func NewHub() *Hub {
 	return &Hub{
-		Rooms: make(),
+		Rooms: make(map[string]*Room),
 	}
 }
