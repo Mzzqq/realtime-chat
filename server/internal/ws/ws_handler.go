@@ -2,6 +2,7 @@ package ws
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/gorilla/websocket"
 	"net/http"
 )
 
@@ -36,6 +37,14 @@ func (h *Handler) CreateRoom(c *gin.Context) {
 	c.JSON(http.StatusOK, req)
 }
 
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:  1024,
+	WriteBufferSize: 1024,
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
+}
+
 func (h *Handler) JoinRoom(c *gin.Context) {
-	
+
 }
