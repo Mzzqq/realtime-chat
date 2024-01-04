@@ -1,5 +1,7 @@
 package ws
 
+import "github.com/gin-gonic/gin"
+
 type Handler struct {
 	hub *Hub
 }
@@ -13,4 +15,8 @@ func NewHandler(h *Hub) *Handler {
 	return &Handler{
 		hub: h,
 	}
+}
+
+func (h *Handler) CreateRoom(c *gin.Context) {
+	
 }
