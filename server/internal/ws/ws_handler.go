@@ -32,4 +32,6 @@ func (h *Handler) CreateRoom(c *gin.Context) {
 		Name:    req.Name,
 		Clients: make(map[string]*Client),
 	}
+
+	c.JSON(http.StatusOK, req)
 }
