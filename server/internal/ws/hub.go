@@ -7,7 +7,10 @@ type Room struct {
 }
 
 type Hub struct {
-	Rooms map[string]*Room
+	Rooms      map[string]*Room
+	Register   chan *Message
+	Unregister chan *Message
+	Broadcast  chan *Message
 }
 
 func NewHub() *Hub {
