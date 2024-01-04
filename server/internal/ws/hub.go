@@ -8,8 +8,8 @@ type Room struct {
 
 type Hub struct {
 	Rooms      map[string]*Room
-	Register   chan *Message
-	Unregister chan *Message
+	Register   chan *Client
+	Unregister chan *Client
 	Broadcast  chan *Message
 }
 
