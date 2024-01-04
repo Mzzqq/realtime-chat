@@ -35,3 +35,7 @@ func (h *Handler) CreateRoom(c *gin.Context) {
 
 	c.JSON(http.StatusOK, req)
 }
+
+func (h *Handler) JoinRoom(c *gin.Context) {
+	
+}
