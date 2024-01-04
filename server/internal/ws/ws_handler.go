@@ -46,5 +46,39 @@ var upgrader = websocket.Upgrader{
 }
 
 func (h *Handler) JoinRoom(c *gin.Context) {
+	conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
 
+	/*
+		/ws/JoinRoom/:roomId?userId=1&username=user
+	*/
+
+	roomId := c.Param("roomId")
+	clientId := c.Query("clientId")
+	username := c.Query("username")
+
+	cl := &Client{
+		Conn:     conn,
+		Message:  make(chan *Message, 10),
+		ID:       clientId,
+		RoomID:   roomId,
+		Username: username,
+	}
+
+	m := &Message{
+		Content:  "A new user has joined the room",
+		RoomID:   roomId,
+		Username: username,
+	}
+
+	// Register a new client through the register channel
+	h.hub.Reg
+
+	// Broadcas that message
+
+	// writeMessage()
+	// readMessage()
 }
