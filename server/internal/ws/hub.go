@@ -7,5 +7,11 @@ type Room struct {
 }
 
 type Hub struct {
-	Room map[string]*Room
+	Rooms map[string]*Room
+}
+
+func NewHub() *Hub {
+	return &Hub{
+		Rooms: make(),
+	}
 }
