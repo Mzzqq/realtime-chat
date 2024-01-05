@@ -34,7 +34,7 @@ func (c *Client) writeMessage() {
 	}
 }
 
-func (c *Client) readMessgae(hub *Hub) {
+func (c *Client) readMessage(hub *Hub) {
 	defer func() {
 		hub.Unregister <- c
 		c.Conn.Close()
