@@ -81,5 +81,7 @@ func (h *Handler) JoinRoom(c *gin.Context) {
 	h.hub.Broadcast <- m
 
 	// writeMessage()
+	go cl.writeMessage()
 	// readMessage()
+	cl.readMessage(h.hub)
 }
