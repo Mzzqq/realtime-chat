@@ -15,3 +15,18 @@ type Message struct {
 	RoomID   string `json:"roomId"`
 	Username string `json:"username"`
 }
+
+func (c *Client) writeMessage() {
+	defer func() {
+		c.Conn.Close()
+	}()
+
+	for {
+		message, ok := <-c.Message
+		if !ok {
+			return
+		}
+
+		c.Conn.WriteJSON(message)
+	}
+}
