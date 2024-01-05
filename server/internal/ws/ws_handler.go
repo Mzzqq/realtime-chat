@@ -86,6 +86,11 @@ func (h *Handler) JoinRoom(c *gin.Context) {
 	cl.readMessage(h.hub)
 }
 
+type RoomRes struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
 func (h *Handler) GetRooms(c *gin.Context) {
-	
+
 }
