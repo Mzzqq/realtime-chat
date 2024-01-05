@@ -85,3 +85,7 @@ func (h *Handler) JoinRoom(c *gin.Context) {
 	// readMessage()
 	cl.readMessage(h.hub)
 }
+
+func (h *Handler) GetRooms(c *gin.Context) {
+	
+}
