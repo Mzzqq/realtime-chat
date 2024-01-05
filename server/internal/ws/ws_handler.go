@@ -92,5 +92,14 @@ type RoomRes struct {
 }
 
 func (h *Handler) GetRooms(c *gin.Context) {
+	rooms := make([]RoomRes, 0)
 
+	for _, r := range h.hub.Rooms {
+		rooms = append(rooms, RoomRes{
+			ID:   r.ID,
+			Name: r.Name,
+		})
+	}
+
+	c.JSON(http.StatusOK, rooms)
 }
