@@ -124,4 +124,6 @@ func (h *Handler) GetClients(c *gin.Context) {
 			Username: c.Username,
 		})
 	}
+
+	c.JSON(http.StatusOK, clients)
 }
