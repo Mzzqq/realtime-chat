@@ -106,7 +106,7 @@ func (h *Handler) GetRooms(c *gin.Context) {
 
 type ClientRes struct {
 	ID       string `json:"id"`
-	Username string `json:"name"`
+	Username string `json:"username"`
 }
 
 func (h *Handler) GetClients(c *gin.Context) {
