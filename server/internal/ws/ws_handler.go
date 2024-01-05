@@ -103,3 +103,7 @@ func (h *Handler) GetRooms(c *gin.Context) {
 
 	c.JSON(http.StatusOK, rooms)
 }
+
+func (h *Handler) GetClients(c *gin.Context) {
+	
+}
