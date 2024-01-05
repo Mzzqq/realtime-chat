@@ -104,6 +104,11 @@ func (h *Handler) GetRooms(c *gin.Context) {
 	c.JSON(http.StatusOK, rooms)
 }
 
+type ClientRes struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
 func (h *Handler) GetClients(c *gin.Context) {
-	
+
 }
