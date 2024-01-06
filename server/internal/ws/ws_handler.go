@@ -56,21 +56,21 @@ func (h *Handler) JoinRoom(c *gin.Context) {
 		/ws/JoinRoom/:roomId?userId=1&username=user
 	*/
 
-	roomId := c.Param("roomId")
-	clientId := c.Query("userId")
+	roomID := c.Param("roomId")
+	clientID := c.Query("userId")
 	username := c.Query("username")
 
 	cl := &Client{
 		Conn:     conn,
 		Message:  make(chan *Message, 10),
-		ID:       clientId,
-		RoomID:   roomId,
+		ID:       clientID,
+		RoomID:   roomID,
 		Username: username,
 	}
 
 	m := &Message{
 		Content:  "A new user has joined the room",
-		RoomID:   roomId,
+		RoomID:   roomID,
 		Username: username,
 	}
 
